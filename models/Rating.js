@@ -29,4 +29,6 @@ Rating.init(
       allowNull: false
     }
   }
-)
+);
+
+module.exports = Rating;
