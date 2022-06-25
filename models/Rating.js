@@ -12,6 +12,9 @@ Rating.init(
     },
     reputation: {
       type: DataTypes.INTEGER,
+      attributes: [
+        [Sequelize.fn('AVG', Sequelize.col('reputation.stars')), 'avgRating'],
+      ],
       references: {
         model: 'user',
         key: 'id'
