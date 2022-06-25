@@ -33,3 +33,5 @@ Like.init(
     modelName: 'like'
   }
 );
+
+module.exports = Like;

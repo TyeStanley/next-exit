@@ -7,3 +7,11 @@ const apiRoutes = require('./api');
 
 // route paths
 // router.use('/', homeRoutes);
+router.use('/api', apiRoutes);
+
+//invalid route request
+router.use((req, res) => {
+  res.status(404).end();
+});
+
+module.exports = router;
