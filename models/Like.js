@@ -34,8 +34,4 @@ Like.init(
   }
 );
 
-<<<<<<< HEAD
 module.exports = Like;
-=======
-module.exports = Like;
->>>>>>> 99e84dbb170961155d77244b689e9e7902fcd8ad
