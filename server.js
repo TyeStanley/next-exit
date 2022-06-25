@@ -6,18 +6,18 @@ const path = require('path');
 // const { User, Post, Like, Rating, Comment } = require('./models');
 
 // import utils
-const helpers = require('./utils/helpers');
+// const helpers = require('./utils/helpers');
 
 // handlebars config
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 
 // session config
 const session = require('express-session');
 const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
-  secret: 'super secret secret',
+  secret: 'chamber of secrets',
   coockie: {},
   resave: false,
   saveUninitialized: true,
@@ -44,7 +44,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // turn on routes
-// app.use(routes);
+app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
