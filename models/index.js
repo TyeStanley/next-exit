@@ -67,12 +67,12 @@ Post.hasMany(Comment, {
 });
 
 // Still in progress: Rating
-Rating.belongsTo(User, {
-  foreignKey: 'id'
-});
+// Rating.belongsTo(User, {
+//   foreignKey: 'id'
+// });
 
-User.hasMany(Rating, {
-  foreignKey: 'reputation'
-})
+// User.hasMany(Rating, {
+//   foreignKey: 'reputation'
+// })
 
-module.exports = { User, Post, Like, Comment, Rating };
+module.exports = { User, Post, Like, Comment };
