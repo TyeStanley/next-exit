@@ -66,7 +66,7 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-// // Still in progress: Rating
+// Still in progress: Rating
 // Rating.belongsTo(User, {
 //   foreignKey: 'id'
 // });
