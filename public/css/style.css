@@ -94,9 +94,8 @@ header a {
   padding: 7px;
 }
 .hero-cta a {
-  padding: 5px;
-
-  border-radius: 5px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 4px;
   background-color: rgba(176, 172, 172, 0.5);
   border: 2px solid white;
   color: white;
@@ -153,4 +152,21 @@ footer h3 {
   padding: 10px;
   width: 100%;
   text-align: center;
+}
+/* Login and Sign up Page */
+.form1, .form2 {
+  background-color: rgba(176, 172, 172, 0.7);
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px solid white;
+  color: white;
+}
+.special-btn {
+  border: 1px solid white;
+}
+.special-btn:hover {
+  color: blue;
+  background-color: white;
+  border: 1px solid blue;
 }
