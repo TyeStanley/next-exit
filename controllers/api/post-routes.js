@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       'title',
       'created_at'
       // like count to be added after likes have been setup
-      
+
       // [
       //   sequelize.literal(
       //     '(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)',
@@ -99,6 +99,58 @@ router.post('/', (req, res) => {
     user_id: req.body.user_id
   })
     .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// PUT /api/posts/like - LIKE a post
+router.put('/like', (req, res) => {
+  Post.update()
+})
+
+// PUT /api/posts - UPDATE a post
+router.put('/:id', (req, res) => {
+  Post.update(
+    {
+      title: req.body.title
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'Post not found' });
+        return;
+      }
+
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// DELETE /api/posts/:id - DELETE a post
+router.delete('/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'Post not found' });
+        return;
+      }
+
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
