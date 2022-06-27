@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment, Like } = require('../../models');
-
 const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 // GET /api/posts - READ all posts
 router.get('/', (req, res) => {
@@ -54,12 +54,11 @@ router.get('/:id', (req, res) => {
       'post_url',
       'title',
       'created_at'
-      // like count to be added after likes have been setup
       // [
       //   sequelize.literal(
-      //     '(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)',
-      //     'like_count'
-      //   )
+      //     '(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'
+      //   ),
+      //   'like_count'
       // ]
     ],
     include: [
@@ -92,11 +91,11 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/posts - CREATE a post
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     post_url: req.body.post_url,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -107,11 +106,28 @@ router.post('/', (req, res) => {
 
 // PUT /api/posts/like - LIKE a post
 router.put('/like', (req, res) => {
-  Post.update()
-})
+  Like.create({
+    user_id: req.body.user_id,
+    post_id: req.body.post_id
+  })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  // Post.upvote(
+  //   { ...req.body, user_id: req.session.user_id },
+  //   { Like, Comment, User }
+  // )
+  //   .then(updatedPostData => res.json(updatedPostData))
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   });
+});
 
 // PUT /api/posts - UPDATE a post
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title
@@ -137,7 +153,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/posts/:id - DELETE a post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id
