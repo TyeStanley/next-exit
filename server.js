@@ -38,6 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // use session
 app.use(session(sess));
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
 
 // add handlebars
 app.engine('handlebars', hbs.engine);
