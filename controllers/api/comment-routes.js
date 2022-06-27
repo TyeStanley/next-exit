@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment, Post, User, Like } = require('../../models');
+const { Comment, Post, User, Liked } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET /api/comments - READ all comments

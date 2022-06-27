@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // use session
 app.use(session(sess));
+// make session info available for handlebars access
 app.use((req, res, next) => {
   res.locals.session = req.session;
   next();

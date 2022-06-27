@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment, Like } = require('../../models');
+const { Post, User, Comment, Liked } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -106,7 +106,7 @@ router.post('/', withAuth, (req, res) => {
 
 // PUT /api/posts/like - LIKE a post
 router.put('/like', (req, res) => {
-  Like.create({
+  Liked.create({
     user_id: req.body.user_id,
     post_id: req.body.post_id
   })
