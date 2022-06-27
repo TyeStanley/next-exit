@@ -1,7 +1,38 @@
 
 <section class="hero">
   <div class="hero-cta">
-    <h2>Welcome to Next Exit</h2>
-    <p>Where we at Next Exit encourage you to share your joyful traveling experiences</p>
+    {{#if loggedIn}}
+      <h2>Welcome to Next Exit</h2>
+      <p>Where we at Next Exit encourage you to share your joyful traveling experiences</p>
+      {{else}}
+        <h2>Welcome to Next Exit</h2>
+        <p>Where we encourage you to post your joyful traveling experiences</p>
+        <a href='/login'>login</a>
+      {{/if}}
+  </div>
+</section>
+
+<section class="second-section">
+  <div class="second-section-part1">
+    <h3>Connection of Like-minded Travelers</h3>
+    <p>We at Next Exit believe in providing a connection of travelers that likes to share and comment
+      on their own journeys and others alike. 
+    </p>
+    <p><b>Life is a journey, not a destination” – Ralph Waldo Emerson</b></p>
+  </div>
+
+  <div class="second-section-part2">
+    <div class="d-flex justify-content-center row">
+      <div class="part2-color col-5">
+        <h3>We are all Travelers</h3>
+        <p>Come meet other travelers just like you. In our friendly community of like-minded people Where
+          you will fit right in. Explore other travlers post and even comment on them to express how much
+          you would love to visit there as well!
+        </p>
+      </div>
+      <div id="laptop-div-holder col-5">
+        <img src="./images/laptop-travel.png" alt="A nice view with some technology" />
+      </div>
+    </div>
   </div>
 </section>
