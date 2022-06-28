@@ -2,8 +2,6 @@ const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
-// VVVV Would this go here like this? (Could be wrong just testing) VVVV
-// const { User, Post, Like, Rating, Comment } = require('./models');
 
 // import utils
 // const helpers = require('./utils/helpers');

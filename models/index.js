@@ -3,6 +3,7 @@ const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
 const Liked_Post = require('./Liked_Post');
+const Liked_Comment = require('./Liked_Comment');
 
 // create associations
 User.hasMany(Post, {
@@ -24,14 +25,14 @@ Post.belongsToMany(User, {
 });
 
 User.belongsToMany(Comment, {
-  through: Liked_Post,
+  through: Liked_Comment,
   as: 'liked_comments',
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
 Comment.belongsToMany(User, {
-  through: Liked_Post,
+  through: Liked_Comment,
   as: 'liked_comments',
   foreignKey: 'comment_id',
   onDelete: 'SET NULL'
@@ -52,7 +53,12 @@ Liked_Post.belongsTo(Post, {
   onDelete: 'SET NULL'
 });
 
-Liked_Post.belongsTo(Comment, {
+Liked_Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+Liked_Comment.belongsTo(User, {
   foreignKey: 'comment_id',
   onDelete: 'SET NULL'
 });
@@ -84,4 +90,12 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-module.exports = { User, Post, Liked_Post, Comment };
+User.hasMany(Liked_Comment, {
+  foreignKey: 'user_id'
+});
+
+Comment.hasMany(Liked_Comment, {
+  foreignKey: 'comment_id'
+});
+
+module.exports = { User, Post, Liked_Post, Comment, Liked_Comment };
