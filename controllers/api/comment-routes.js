@@ -28,6 +28,11 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+// UPDATE /api/comments/like - Like a comment
+router.put('/like', (req,res) => {
+  
+})
+
 // DELETE /api/comments/:id - DELETE a comment
 router.delete('/:id', withAuth, (req, res) => {
   Comment.destroy({
