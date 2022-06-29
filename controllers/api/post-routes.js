@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment, Liked } = require('../../models');
+const { Post, User, Comment, Liked_Post } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -10,15 +10,13 @@ router.get('/', (req, res) => {
       'id',
       'post_url',
       'title',
-      'created_at'
-      // like count to be added after likes have been setup
-
-      // [
-      //   sequelize.literal(
-      //     '(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)',
-      //     'like_count'
-      //   )
-      // ]
+      'created_at',
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM liked_post WHERE post.id = liked_post.post_id)'
+        ),
+        'liked_count'
+      ]
     ],
     order: [['created_at', 'DESC']],
     include: [
@@ -53,13 +51,13 @@ router.get('/:id', (req, res) => {
       'id',
       'post_url',
       'title',
-      'created_at'
-      // [
-      //   sequelize.literal(
-      //     '(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'
-      //   ),
-      //   'like_count'
-      // ]
+      'created_at',
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM liked_post WHERE post.id = liked_post.post_id)'
+        ),
+        'like_count'
+      ]
     ],
     include: [
       {
@@ -91,11 +89,11 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/posts - CREATE a post
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     post_url: req.body.post_url,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -105,9 +103,9 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/posts/like - LIKE a post
-router.put('/like', (req, res) => {
-  Liked.create({
-    user_id: req.body.user_id,
+router.put('/like', withAuth, (req, res) => {
+  Liked_Post.create({
+    user_id: req.session.user_id,
     post_id: req.body.post_id
   })
     .then(dbPostData => res.json(dbPostData))

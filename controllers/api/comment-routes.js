@@ -1,11 +1,23 @@
 const router = require('express').Router();
-const { Comment, Post, User, Liked } = require('../../models');
+const { Comment, Post, User, Liked_Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+const sequelize = require('../../config/connection');
 
 // GET /api/comments - READ all comments
 router.get('/', (req, res) => {
   Comment.findAll({
-    attributes: ['id', 'comment_text', 'user_id', 'post_id']
+    attributes: [
+      'id',
+      'comment_text',
+      'user_id',
+      'post_id',
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM liked_comment WHERE comment.id = liked_comment.comment_id)'
+        ),
+        'like_count'
+      ]
+    ]
   })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
@@ -25,6 +37,19 @@ router.post('/', withAuth, (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(400).json(err);
+    });
+});
+
+// UPDATE /api/comments/like - Like a comment
+router.put('/like', withAuth, (req, res) => {
+  Liked_Comment.create({
+    user_id: req.session.user_id,
+    comment_id: req.body.comment_id
+  })
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
