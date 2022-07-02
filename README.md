@@ -1,28 +1,26 @@
 # Next Exit
 
-Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
 ## Installation
 An application that will run in the browser and feature dynamically updated. Application features polished UI and is responsive, ensuring adaptation to multiple screen sizes.
 
-To build this webpage we used: - HTML - Bulma CSS - Javascript - Edamam API - Movie API - Images
+To build this webpage we used: Bootstrap - Javascript - Handlebar.js - Express.js - Node.js - MySQL - Sequelize - Heroku
 
-## About this Webpage
-Next Exit is a social platform designed to find recipe and movie selections for users unable to choose themselves. We have a recipe selector and a movie selector that will pull up options. 
+## About this Project
+Next Exit is a social media platform for travelers to post and comment about their experiences from different places. Travelers can post about their experiences, tips and tricks, and comment on other posts as travel ramps back up in the world. 
 
 ## User Story
-AS A user I will be able to view a responsive site. AS an undecisive person I WANT to be given recipe and movie suggestions. WHEN I click on "Get Recipe" I WANT to be given a dinner recipe. WHEN I click on "Get Movie" I WANT to be given a movie suggestion.
+As a travel enthusiast, I want to be able to use a social media platform for travelers to create an account, get travel tips, and interact with other travelers to learn about and plan my next trip.
 
 ## Contributors
 Tye Stanley, Chase Miller, Derik Cepeda, Gracie Navarro, and Paulina Gamboa.
 
 ## Screenshots
 
-![This image shows the header, navigation, banner and music section.](./assets/images/screenshot1.png)
+![This image shows the home page and login.](./public/images/screenshot-1.png)
 
-![This image shows the recipe selector pulled via API.](./assets/images/screenshot2.png)
+![This image shows the login and signup.](./public/images/screenshot-2.png)
 
-![This image shows the movie selector pulled via API and footer.](./assets/images/screenshot3.png)
+![This image shows the footer.](./public/images/screenshot-3.png)
 
 ## Links
 Deployed link: https://next-exit.herokuapp.com
