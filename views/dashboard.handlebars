@@ -4,9 +4,9 @@
       {{#if loggedIn}}
         <h2>{{session.username}}'s Stats</h2>
         <div id="stat-container">
-          <p class="p-stats">Comments: {{session.comments}}</p>
           <p class="p-stats">Posts: {{session.posts}}</p>
           <p class="p-stats">Likes: {{session.likes}}</p>
+          <p class="p-stats">Comments: {{session.comments}}</p>
         </div>
       {{else}}
         <h2>You are not Logged In!</h2>
@@ -14,5 +14,21 @@
       {{/if}}
     </div>
   </section>
+
+  {{#if posts.length}}
+    <section>
+      <h2>Your Posts</h2>
+      <ol>
+        {{#each posts as |post|}}
+        <li>
+          {{> post-info post}}
+          <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        </li>
+        {{/each}}
+      </ol>
+    </section>
+  {{/if}}
+
+<script src="/javascript/add-post.js"></script>
 
 </section>
