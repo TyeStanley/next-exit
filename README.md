@@ -1,5 +1,7 @@
 # Next Exit
 
+![License Badge](https://img.shields.io/github/license/TyeStanley/next-exit)
+
 ## Installation
 An application that will run in the browser and feature dynamically updated. Application features polished UI and is responsive, ensuring adaptation to multiple screen sizes.
 
@@ -26,3 +28,11 @@ Tye Stanley, Chase Miller, Derik Cepeda, Gracie Navarro, and Paulina Gamboa.
 Deployed link: https://next-exit.herokuapp.com
 
 Github link: https://github.com/TyeStanley/next-exit
+
+## License
+
+Copyright &copy; 
+  Tye Stanley, Chase Miller, Derik Cepeda, Gracie Navarro, and Paulina Gamboa. 
+  All rights reserved.
+  
+  Licensed under the [MIT](LICENSE) license.
