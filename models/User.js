@@ -37,6 +37,10 @@ User.init(
       validate: {
         len: [4]
       }
+    },
+    profilePictureUrl: {
+      type: DataTypes.STRING,
+      defaultValue: './images/hero-img.jpg'
     }
   },
   {

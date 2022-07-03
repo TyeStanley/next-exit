@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Liked_Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET /api/users - read all users
 router.get('/', (req, res) => {
@@ -72,6 +73,7 @@ router.post('/', (req, res) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
+        req.session.profilePictureUrl = dbUserData.profilePictureUrl;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
@@ -84,11 +86,11 @@ router.post('/', (req, res) => {
 });
 
 // UPDATE /api/users/:id - update a user
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   // expects { username, email, password }
   User.update(req.body, {
     where: {
-      id: req.params.id
+      id: req.session.id
     },
     individualHooks: true
   })
@@ -150,6 +152,7 @@ router.post('/login', (req, res) => {
         // declare session variables
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
+        req.session.profilePictureUrl = dbUserData.profilePictureUrl;
         req.session.loggedIn = true;
 
         console.log(req.session);
