@@ -21,7 +21,10 @@
             </div>
             <button type="submit" class="btn">Create</button>
           </form>
-        
+        {{else}}
+        <h2>You are not Logged In!</h2>
+        <a href='/login'>login</a>
+        {{/if}}
           <!-- Shows Posts -->
           {{#if posts.length}}
             <h2>Your Posts</h2>
@@ -34,14 +37,10 @@
               {{/each}}
             </ol>
           {{/if}}
-      {{else}}
-        <h2>You are not Logged In!</h2>
-        <a href='/login'>login</a>
-      {{/if}}
       </div>
     </div>
   </section>
 
   <script src="/javascript/add-post.js"></script>
-
+  <script src="/javascript/comment.js"></script>
 </section>

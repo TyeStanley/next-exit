@@ -76,10 +76,9 @@ router.get('/:id', (req, res) => {
   })
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'Post not found' });
+        res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-
       res.json(dbPostData);
     })
     .catch(err => {
@@ -113,15 +112,15 @@ router.put('/like', withAuth, (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-  // Post.upvote(
-  //   { ...req.body, user_id: req.session.user_id },
-  //   { Like, Comment, User }
-  // )
-  //   .then(updatedPostData => res.json(updatedPostData))
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   });
+  Post.upvote(
+    { ...req.body, user_id: req.session.user_id },
+    { Like, Comment, User }
+  )
+    .then(updatedPostData => res.json(updatedPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // PUT /api/posts - UPDATE a post
@@ -138,10 +137,9 @@ router.put('/:id', withAuth, (req, res) => {
   )
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'Post not found' });
+        res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-
       res.json(dbPostData);
     })
     .catch(err => {
