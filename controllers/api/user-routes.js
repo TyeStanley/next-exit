@@ -72,6 +72,7 @@ router.post('/', (req, res) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
+        req.session.profilePictureUrl = dbUserData.profilePictureUrl;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
@@ -150,6 +151,7 @@ router.post('/login', (req, res) => {
         // declare session variables
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
+        req.session.profilePictureUrl = dbUserData.profilePictureUrl;
         req.session.loggedIn = true;
 
         console.log(req.session);

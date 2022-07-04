@@ -123,7 +123,7 @@ router.put('/like', withAuth, (req, res) => {
     });
 });
 
-// PUT /api/posts - UPDATE a post
+// PUT /api/posts/:id - UPDATE a post
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
