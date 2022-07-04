@@ -216,6 +216,8 @@ footer h3 {
 
 .p-stats {
   color: white;
-  margin: 2px 0 2px 0;
+  margin: 1px 0 1px 0;
   font-weight: bold;
+  padding: 0;
+
 }

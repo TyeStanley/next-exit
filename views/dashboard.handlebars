@@ -7,28 +7,41 @@
           <p class="p-stats">Posts: {{session.posts}}</p>
           <p class="p-stats">Likes: {{session.likes}}</p>
           <p class="p-stats">Comments: {{session.comments}}</p>
-        </div>
+
+          <!-- Creates New Posts -->
+          <h4>Create New Post</h4>
+          <form class="new-post-form">
+            <div>
+              <label for="post-title">Title</label>
+              <input type="text" id="post-title" name="post-title" />
+            </div>
+            <div>
+              <label for="post-url">Link</label>
+              <input id="post-url" name="post-url" />
+            </div>
+            <button type="submit" class="btn">Create</button>
+          </form>
+        
+          <!-- Shows Posts -->
+          {{#if posts.length}}
+            <h2>Your Posts</h2>
+            <ol>
+              {{#each posts as |post|}}
+                <li>
+                  {{> post-info post}}
+                  <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+                </li>
+              {{/each}}
+            </ol>
+          {{/if}}
       {{else}}
         <h2>You are not Logged In!</h2>
         <a href='/login'>login</a>
       {{/if}}
+      </div>
     </div>
   </section>
 
-  {{#if posts.length}}
-    <section>
-      <h2>Your Posts</h2>
-      <ol>
-        {{#each posts as |post|}}
-        <li>
-          {{> post-info post}}
-          <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-        </li>
-        {{/each}}
-      </ol>
-    </section>
-  {{/if}}
-
-<script src="/javascript/add-post.js"></script>
+  <script src="/javascript/add-post.js"></script>
 
 </section>
