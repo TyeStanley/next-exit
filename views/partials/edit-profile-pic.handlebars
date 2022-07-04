@@ -1,0 +1,26 @@
+
+<article>
+    <!-- placeholder for uploaded image -->
+    <img  
+      id="profile-image" 
+      src="{{session.profilePictureUrl}}">
+    </img> 
+
+    <button 
+      id="upload_widget" 
+      class="cloudinary-button">
+        Upload Image
+    </button>
+</article>
+    
+<!-- cloudinary upload widget -->
+<script 
+    src="https://widget.cloudinary.com/v2.0/global/all.js" 
+    type="text/javascript">
+</script>
+
+<!-- local upload instantiation -->
+<script 
+    src="upload-widget.js" 
+    type="text/javascript">
+</script>

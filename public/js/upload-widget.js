@@ -12,8 +12,8 @@ const myWidget = cloudinary.createUploadWidget(
   {
     cloudName: cloudName,
     uploadPreset: uploadPreset,
-    multiple: false //restrict upload to a single file
-    // cropping: true, //add a cropping step
+    multiple: false, //restrict upload to a single file
+    cropping: true //add a cropping step
     // showAdvancedOptions: true,  //add advanced options (public_id and tag)
     // sources: [ "local", "url"], // restrict the upload sources to URL and local files
     // folder: "user_images", //upload files to the specified folder

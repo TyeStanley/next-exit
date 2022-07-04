@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User, Post, Liked_Post, Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
 
 // GET /api/users - read all users
 router.get('/', (req, res) => {
@@ -86,11 +85,11 @@ router.post('/', (req, res) => {
 });
 
 // UPDATE /api/users/:id - update a user
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => {
   // expects { username, email, password }
   User.update(req.body, {
     where: {
-      id: req.session.id
+      id: req.params.id
     },
     individualHooks: true
   })
