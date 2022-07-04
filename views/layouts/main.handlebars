@@ -18,20 +18,14 @@
       <nav>
         <ul>
           {{#if loggedIn}}
-          {{!-- keeping it just in case u guys Dont like it? --}}
-          {{!-- <li><a href='/dashboard'>dashboard</a></li> --}}
-
           <button type="button" class="btn btn-primary my-2 mx-2 "><a href='/dashboard'>Dashboard</a>
             <span class="position-absolute top-0 start-100 translate-middle p-2">
             </span>
           </button>
           <button type="button" class="btn btn-secondary my-2 mx-2"><a id='logout' href='/'>Logout</a>
-            {{!-- <li><a id='logout' href="/">logout</a></li> --}}
-            {{else}}
+          {{else}}
             <button type="button" class="btn btn-primary position-relative"><a href='/login'>Login</a>
-
-              {{!-- <li><a href='/login'>login</a></li> --}}
-              {{/if}}
+          {{/if}}
         </ul>
       </nav>
     </header>

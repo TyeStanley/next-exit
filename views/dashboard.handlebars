@@ -1,5 +1,14 @@
-<html lang='en'>
+<section class="dashboard-page">
+  <section class='hero'>
+    <div class='hero-cta'>
+      {{#if loggedIn}}
+        <h2>{{session.username}}'s Stats</h2>
+        <div id="stat-container">
+          <p class="p-stats">Posts: {{session.posts}}</p>
+          <p class="p-stats">Likes: {{session.likes}}</p>
+          <p class="p-stats">Comments: {{session.comments}}</p>
 
+<<<<<<< HEAD
 <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -199,13 +208,42 @@
                         </div>
                     </div>
                 </div>
+=======
+          <!-- Creates New Posts -->
+          <h4>Create New Post</h4>
+          <form class="new-post-form">
+            <div>
+              <label for="post-title">Title</label>
+              <input type="text" id="post-title" name="post-title" />
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div> }}
+            <div>
+              <label for="post-url">Link</label>
+              <input id="post-url" name="post-url" />
+>>>>>>> 72efc2d2bff5f47a71d7efdb4aa4f5e513995857
+            </div>
+            <button type="submit" class="btn">Create</button>
+          </form>
+        {{else}}
+        <h2>You are not Logged In!</h2>
+        <a href='/login'>login</a>
+        {{/if}}
+          <!-- Shows Posts -->
+          {{#if posts.length}}
+            <h2>Your Posts</h2>
+            <ol>
+              {{#each posts as |post|}}
+                <li>
+                  {{> post-info post}}
+                  <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+                </li>
+              {{/each}}
+            </ol>
+          {{/if}}
+      </div>
+    </div>
+  </section>
 
+<<<<<<< HEAD
     </main>
 
     <script src='https://upload-widget.cloudinary.com/global/all.js' type='text/javascript'>
@@ -215,3 +253,8 @@
 </body>
 
 </html>
+=======
+  <script src="/javascript/add-post.js"></script>
+  <script src="/javascript/comment.js"></script>
+</section>
+>>>>>>> 72efc2d2bff5f47a71d7efdb4aa4f5e513995857

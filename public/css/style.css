@@ -222,3 +222,19 @@ footer h3 {
   margin: 0 auto;
   background-color: black;
 }
+/* Dashboard Section */
+#stat-container {
+  width: 50%;
+  background-color: gray;
+  margin: 10 auto;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.p-stats {
+  color: white;
+  margin: 1px 0 1px 0;
+  font-weight: bold;
+  padding: 0;
+
+}
