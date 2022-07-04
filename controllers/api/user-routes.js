@@ -99,7 +99,14 @@ router.put('/:id', (req, res) => {
         return;
       }
 
-      res.json(dbUserData);
+      req.session.save(() => {
+        // declare session variables
+        req.session.username = dbUserData.username;
+        req.session.profilePictureUrl = dbUserData.profilePictureUrl;
+
+        console.log(req.session);
+        res.json({ user: dbUserData, message: 'You are now logged in' });
+      });
     })
     .catch(err => {
       console.log(err);

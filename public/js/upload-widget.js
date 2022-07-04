@@ -1,12 +1,30 @@
 const cloudName = 'next-exit'; // replace with your own cloud name
 const uploadPreset = 'next_exit_profile_pics'; // replace with your own upload preset
 
-// Remove the comments from the code below to add
-// additional functionality.
-// Note that these are only a few examples, to see
-// the full list of possible parameters that you
-// can add see:
 //   https://cloudinary.com/documentation/upload_widget_reference
+
+async function updateProfilePicture(newUrl) {
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+
+  const response = await fetch(`/api/users/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      newUrl
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    console.log('Updated');
+    document.location.replace('/dashboard');
+  } else {
+    alert(response.statusText);
+  }
+}
 
 const myWidget = cloudinary.createUploadWidget(
   {
@@ -30,6 +48,8 @@ const myWidget = cloudinary.createUploadWidget(
       document
         .getElementById('profile-image')
         .setAttribute('src', result.info.secure_url);
+
+      updateProfilePicture(result.info.secure_url);
     }
   }
 );
