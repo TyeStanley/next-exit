@@ -2,14 +2,14 @@ const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
+// cloudinary setup
 
 // import utils
-// const helpers = require('./utils/helpers');
-// Heroku push
+const helpers = require('./utils/helpers');
 
 // handlebars config
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 // session config
 const session = require('express-session');
