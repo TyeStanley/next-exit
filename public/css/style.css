@@ -21,6 +21,10 @@ header {
   background-color: rgba(176, 172, 172, 0.5);
 }
 
+body {
+  padding-bottom: 70px;
+}
+
 #gray-cover {
   background-color: rgba(176, 172, 172, 0.5);
 }
@@ -161,13 +165,26 @@ img {
 
 footer {
   width: 100%;
-  height: 140px;
+  height: 100px;
+  flex: auto;
   background-color: #EEEDEB;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* .footer {
+  width: 100%;
+  background-color: #EEEDEB;
+  color: white;
+  position: relative;
+  margin-top: -150px;
+  display: flex;
+  height: 150px;
+  clear: both;
+  padding-top: 20px;
+} */
 
 footer h3 {
   background-color: rgba(176, 172, 172, 0.5);
