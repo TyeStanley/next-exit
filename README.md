@@ -14,7 +14,7 @@ Next Exit is a social media platform for travelers to post and comment about the
 As a travel enthusiast, I want to be able to use a social media platform for travelers to create an account, get travel tips, and interact with other travelers to learn about and plan my next trip.
 
 ## Contributors
-Tye Stanley, Chase Miller, Derik Cepeda, Gracie Navarro, and Paulina Gamboa.
+Tye Stanley, Chase Miller, Derik Cepeda, Gracie Navarro , and Paulina Gamboa.
 
 ## Screenshots
 
